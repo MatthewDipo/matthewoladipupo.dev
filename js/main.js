@@ -1,10 +1,11 @@
 // ── TYPING ANIMATION ───────────────────────────────────────
 const roles = [
   'DevOps Engineer',
-  'Data Scientist',
-  'ML Researcher',
-  'Cloud Architect',
+  'Site Reliability Engineer',
+  'Platform Engineer',
+  'Cloud Infrastructure Architect',
   'Kubernetes Engineer',
+  'Data Scientist',
 ];
 
 let roleIndex = 0;
@@ -114,20 +115,12 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 
 document.querySelectorAll(
-  '.project-card, .pub-item, .award-card, .membership-card, .review-card, .contact-card, .skill-group, .stat-card'
-).forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  '.project-card, .pub-item, .award-card, .membership-card, .review-card, .contact-card, .skill-group, .stat-card, .detail-card'
+).forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${(i % 4) * 80}ms`;
   revealObserver.observe(el);
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Add .visible style
-  const style = document.createElement('style');
-  style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
-  document.head.appendChild(style);
 });
