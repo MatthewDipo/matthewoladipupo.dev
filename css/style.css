@@ -615,6 +615,77 @@ section { padding: 100px 0; position: relative; z-index: 1; }
   font-weight: 600;
 }
 
+/* ── TECH ICONS GRID ───────────────────────────────────── */
+.tech-category {
+  margin-bottom: 48px;
+}
+.tech-category:last-child { margin-bottom: 0; }
+
+.tech-cat-title {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--faint);
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tech-icons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px 14px;
+  min-width: 88px;
+  transition: all var(--transition);
+  cursor: default;
+}
+.tech-item:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  background: var(--surface2);
+}
+.tech-item i {
+  font-size: 2.4rem;
+  line-height: 1;
+  transition: transform var(--transition);
+}
+.tech-item:hover i { transform: scale(1.1); }
+.tech-item > span {
+  font-size: .72rem;
+  color: var(--muted);
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Text-icon fallback for tools without Devicon */
+.tech-text-icon i { display: none; }
+.ti-abbr {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .85rem;
+  font-weight: 800;
+  line-height: 1;
+  display: block;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.red-icon .ti-abbr { color: var(--red); }
+
 /* ── PROJECTS ──────────────────────────────────────────── */
 #projects { background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%); }
 
@@ -1147,6 +1218,121 @@ section { padding: 100px 0; position: relative; z-index: 1; }
 }
 @media (max-width: 680px) {
   .cert-grid { grid-template-columns: 1fr; }
+}
+
+/* ── PRESS ─────────────────────────────────────────────── */
+#press { background: var(--bg); }
+
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.press-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.press-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+.press-card:hover {
+  border-color: rgba(240,136,62,.35);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
+  opacity: 1;
+}
+.press-card:hover::before { transform: scaleX(1); }
+
+.press-pub {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.press-pub-logo {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.press-pub-logo.vanguard {
+  background: rgba(220,30,30,.12);
+  border: 1px solid rgba(220,30,30,.25);
+  color: #DC1E1E;
+}
+.press-pub-logo.guardian {
+  background: rgba(63,185,80,.12);
+  border: 1px solid rgba(63,185,80,.25);
+  color: var(--green);
+}
+.press-pub-logo.sun {
+  background: rgba(240,136,62,.12);
+  border: 1px solid rgba(240,136,62,.25);
+  color: var(--orange);
+}
+
+.press-pub-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.press-pub-name {
+  font-weight: 700;
+  font-size: .88rem;
+  color: var(--text);
+}
+.press-pub-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .72rem;
+  color: var(--muted);
+}
+
+.press-card h3 {
+  font-size: .95rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+}
+.press-card p {
+  font-size: .83rem;
+  color: var(--muted);
+  line-height: 1.7;
+  flex: 1;
+}
+.press-read {
+  font-size: .8rem;
+  color: var(--orange);
+  font-weight: 600;
+  margin-top: auto;
+}
+
+@media (max-width: 680px) {
+  .press-grid { grid-template-columns: 1fr; }
+  .tech-icons-grid { gap: 8px; }
+  .tech-item { min-width: 76px; padding: 14px 12px 10px; }
+  .tech-item i { font-size: 2rem; }
 }
 
 /* ── BLOG ──────────────────────────────────────────────── */
